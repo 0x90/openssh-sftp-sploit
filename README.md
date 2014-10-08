@@ -17,6 +17,7 @@ Here's my PoC for 64bit Linux:
 
 
 ```
+apt-get install libssh-dev
 gcc sshsploit.c -o sshsploit -std=c99 -lssh
 ```
 
