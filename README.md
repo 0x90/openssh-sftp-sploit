@@ -1,6 +1,6 @@
 # OpenSSH <=6.6 SFTP misconfiguration exploit for 64bit Linux
 
-penSSH lets you grant SFTP access to users without allowing full command
+OpenSSH lets you grant SFTP access to users without allowing full command
 execution using "ForceCommand internal-sftp". However, if you misconfigure
 the server and don't use ChrootDirectory, the user will be able to access
 all parts of the filesystem that he has access to - including procfs. On
@@ -19,3 +19,9 @@ Here's my PoC for 64bit Linux:
 ```
 gcc sshsploit.c -o sshsploit -std=c99 -lssh
 ```
+
+## Links
+
+http://www.bortzmeyer.org/files/vente-sshd-leak.txt
+
+http://seclists.org/fulldisclosure/2014/Oct/35
